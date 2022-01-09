@@ -1,0 +1,58 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+        <record model="ir.ui.view" id="view_task_form2">
+            <field name="name">project.view_task_form2.inherit</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="model">project.task</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='user_id']" position="after">
+                    <field name="contract_id" />
+                </xpath>
+            </field>
+        </record>
+
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="ntek_customisation.action_window">
+      <field name="name">ntek_customisation window</field>
+      <field name="res_model">ntek_customisation.ntek_customisation</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="ntek_customisation.action_server">
+      <field name="name">ntek_customisation server</field>
+      <field name="model_id" ref="model_ntek_customisation_ntek_customisation"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="ntek_customisation" id="ntek_customisation.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="ntek_customisation.menu_1" parent="ntek_customisation.menu_root"/>
+    <menuitem name="Menu 2" id="ntek_customisation.menu_2" parent="ntek_customisation.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="ntek_customisation.menu_1_list" parent="ntek_customisation.menu_1"
+              action="ntek_customisation.action_window"/>
+    <menuitem name="Server to list" id="ntek_customisation" parent="ntek_customisation.menu_2"
+              action="ntek_customisation.action_server"/>
+-->
+  </data>
+</odoo>
