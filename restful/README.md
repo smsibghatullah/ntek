@@ -362,3 +362,12 @@ We only need to make a delete request to the resource.
 # New Documentation
 
 http://localhost:8069/api/sale.order?limit=10&domain=id:>:1&fields=name,id,partner_id,origin&order=id asc&offset=10
+
+
+----------------
+{
+   "limit": 1, 
+   "fields": "['id', 'partner_id', 'name']", 
+   "domain":"[('id', 'in', [33,34,12,13,14])]", 
+   "offset":0
+  }

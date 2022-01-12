@@ -6,7 +6,7 @@ import re
 
 from odoo import http
 from odoo.addons.restful.common import (extract_arguments, invalid_response,
-                                        valid_response)
+                                        valid_response, extract_arguments_sibghat)
 from odoo.exceptions import AccessError
 from odoo.http import request
 
@@ -46,13 +46,16 @@ class APIController(http.Controller):
         self._model = "ir.model"
 
     @validate_token
-    @http.route(_routes, type="http", auth="none", methods=["GET"], csrf=False)
+    @http.route(_routes, type="json", auth="none", methods=["GET"], csrf=False)
     def get(self, model=None, id=None, **payload):
         try:
             ioc_name = model
             model = request.env[self._model].search([("model", "=", model)], limit=1)
             if model:
-                domain, fields, offset, limit, order = extract_arguments(**payload)
+                payload = request.httprequest.data.decode()
+                payload = json.loads(payload)
+                domain, fields, offset, limit, order = extract_arguments_sibghat(payload)
+                # domain = ast.literal_eval(payload['domain']) if 'domain' in payload.keys else []
                 data = request.env[model.model].search_read(
                     domain=domain, fields=fields, offset=offset, limit=limit, order=order,
                 )
@@ -63,7 +66,9 @@ class APIController(http.Controller):
                         domain=domain, fields=fields, offset=offset, limit=limit, order=order,
                     )
                 if data:
-                    return valid_response(data)
+                    c=3
+                    return data
+                    # return valid_response(data)
                 else:
                     return valid_response(data)
             return invalid_response(
@@ -74,7 +79,7 @@ class APIController(http.Controller):
             return invalid_response("Access error", "Error: %s" % e.name)
 
     @validate_token
-    @http.route(_routes, type="http", auth="none", methods=["POST"], csrf=False)
+    @http.route(_routes, type="json", auth="none", methods=["POST"], csrf=False)
     def post(self, model=None, id=None, **payload):
         """Create a new record.
         Basic sage:
@@ -118,7 +123,7 @@ class APIController(http.Controller):
                     else:
                         values[k] = v
 
-                resource = request.env[model.model].create(values)
+                resource = request.env[model.model].sudo().create(values)
             except Exception as e:
                 request.env.cr.rollback()
                 return invalid_response("params", e)
@@ -181,10 +186,12 @@ class APIController(http.Controller):
             return valid_response("record %s has been successfully deleted" % record.id)
 
     @validate_token
-    @http.route(_routes, type="http", auth="none", methods=["PATCH"], csrf=False)
+    @http.route(_routes, type="json", auth="none", methods=["PATCH"], csrf=False)
     def patch(self, model=None, id=None, action=None, **payload):
         """."""
-        args = []
+        payload = request.httprequest.data.decode()
+        payload = json.loads(payload)
+        args = [payload]
         try:
             _id = int(id)
         except Exception as e:

@@ -53,3 +53,28 @@ def extract_arguments(limit="80", offset=0, order="id", domain="", fields=[]):
     if offset:
         offset = int(offset)
     return [expresions, fields, offset, limit, order]
+
+def extract_arguments_sibghat(payload):
+    """Parse additional data  sent along request."""
+    limit = get_keys_valus(payload, 'limit', "80")
+    offset = get_keys_valus(payload, 'offset', 0)
+    order = get_keys_valus(payload, 'order', "id")
+    domain = get_keys_valus(payload, 'domain', "")
+    fields = get_keys_valus(payload, 'fields', [])
+
+    limit = int(limit)
+    expresions = []
+    if domain:
+        # expresions = [tuple(preg.replace(":", ",").split(",")) for preg in domain.split(",")]
+        # expresions = json.dumps(expresions)
+        expresions = ast.literal_eval(domain)
+    if fields:
+        fields = ast.literal_eval(fields)
+
+    if offset:
+        offset = int(offset)
+    return [expresions, fields, offset, limit, order]
+
+
+def get_keys_valus(dic, key, default):
+    return dic[key] if key in dic.keys() else default
