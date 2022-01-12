@@ -8,6 +8,17 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='user_id']" position="after">
                     <field name="contract_id" />
+                    <field name="ticket_no" />
+                    <field name="scope_of_work" />
+                    <field name="travel_start" />
+                    <field name="arrival_on_site" />
+                    <field name="repair_start" />
+                    <field name="repair_stop" />
+                    <field name="leave_site" />
+                    <field name="travel_stop" />
+                    <field name="km_start" />
+                    <field name="km_till_date" />
+                    <field name="km_end" />
                 </xpath>
             </field>
         </record>
