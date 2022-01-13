@@ -14,6 +14,8 @@
                     <field name="arrival_on_site" />
                     <field name="repair_start" />
                     <field name="repair_stop" />
+                    <field name="sign_off_taken" />
+                    <field name="sign_off_submitted" />
                     <field name="leave_site" />
                     <field name="travel_stop" />
                     <field name="km_start" />
