@@ -4,6 +4,7 @@ from odoo import models, fields, api, _
 class ProjectTask(models.Model):
     _inherit = 'project.task'
 
+    date_deadline = fields.Date(string='Ticket Date')
     contract_id = fields.Many2one('contract', string='Contract')
     ticket_no = fields.Char(string = 'Ticket No.')
     scope_of_work = fields.Char(string = 'Scope Of Work')
@@ -18,6 +19,7 @@ class ProjectTask(models.Model):
     km_start = fields.Float(string = 'KM Start')
     km_till_date = fields.Float(string = 'KM Till Date')
     km_end = fields.Float(string = 'KM End')
+    field_engineer_note = fields.Char(string = 'Field Engineer Note')
     # end_client = fields.Char(string = 'End Client')
     # site_address = fields.Char(string = 'Site Address')
     # city = fields.Char(string = 'City')

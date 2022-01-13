@@ -11,17 +11,26 @@
                     <field name="ticket_no" />
                     <field name="scope_of_work" />
                     <field name="travel_start" />
+                    <field name="travel_stop" />
                     <field name="arrival_on_site" />
                     <field name="repair_start" />
                     <field name="repair_stop" />
-                    <field name="sign_off_taken" />
-                    <field name="sign_off_submitted" />
-                    <field name="leave_site" />
-                    <field name="travel_stop" />
+
+                </xpath>
+                <xpath expr="//field[@name='tag_ids']" position="after">
                     <field name="km_start" />
                     <field name="km_till_date" />
                     <field name="km_end" />
+                    <field name="sign_off_taken" />
+                    <field name="sign_off_submitted" />
+                    <field name="leave_site" />
+                    <field name="field_engineer_note" />
                 </xpath>
+
+                <xpath expr="//field[@name='tag_ids']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+
             </field>
         </record>
 
