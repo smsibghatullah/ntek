@@ -35,46 +35,74 @@
         </record>
 
 
-    <!-- actions opening views on models -->
-<!--
-    <record model="ir.actions.act_window" id="ntek_customisation.action_window">
-      <field name="name">ntek_customisation window</field>
-      <field name="res_model">ntek_customisation.ntek_customisation</field>
-      <field name="view_mode">tree,form</field>
-    </record>
--->
+      <record model="ir.ui.view" id="project_type_view_tree">
+          <field name="name">Project Type Tree</field>
+          <field name="model">project.type</field>
+          <field name="arch" type="xml">
+              <tree>
+                  <field name="name"></field>
+              </tree>
+          </field>
+      </record>
+      <record id="project_type_action" model="ir.actions.act_window">
+          <field name="name">Project Type</field>
+          <field name="res_model">project.type</field>
+          <field name="view_mode">tree,form</field>
+      </record>
+      <menuitem name="Project Type" id="menu_project_type" parent="project.menu_main_pm"
+                action="project_type_action" sequence="4" />
 
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="ntek_customisation.action_server">
-      <field name="name">ntek_customisation server</field>
-      <field name="model_id" ref="model_ntek_customisation_ntek_customisation"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": model._name,
-        }
-      </field>
-    </record>
--->
 
-    <!-- Top menu item -->
-<!--
-    <menuitem name="ntek_customisation" id="ntek_customisation.menu_root"/>
--->
-    <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="ntek_customisation.menu_1" parent="ntek_customisation.menu_root"/>
-    <menuitem name="Menu 2" id="ntek_customisation.menu_2" parent="ntek_customisation.menu_root"/>
--->
-    <!-- actions -->
-<!--
-    <menuitem name="List" id="ntek_customisation.menu_1_list" parent="ntek_customisation.menu_1"
-              action="ntek_customisation.action_window"/>
-    <menuitem name="Server to list" id="ntek_customisation" parent="ntek_customisation.menu_2"
-              action="ntek_customisation.action_server"/>
--->
+      <record model="ir.ui.view" id="project_sub_type_view_tree">
+          <field name="name">Project Sub Type Tree</field>
+          <field name="model">project.sub.type</field>
+          <field name="arch" type="xml">
+              <tree>
+                  <field name="project_type"></field>
+                  <field name="name"></field>
+              </tree>
+          </field>
+      </record>
+      <record id="project_sub_type_action" model="ir.actions.act_window">
+          <field name="name">Project Sub Type</field>
+          <field name="res_model">project.sub.type</field>
+          <field name="view_mode">tree,form</field>
+      </record>
+      <menuitem name="Project Sub Type" id="menu_project_sub_type" parent="project.menu_main_pm"
+                action="project_sub_type_action" sequence="5" />
+
+
+      <record model="ir.ui.view" id="view_task_form3">
+            <field name="name">project.view_task_form3.inherit</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="model">project.project</field>
+            <field name="arch" type="xml">
+                 <xpath expr="//field[@name='name']" position="after">
+                    <field name="description" placeholder="Project Description"/>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="project_type" />
+                    <field name="project_sub_type" />
+                    <field name="start_date" />
+                    <field name="end_date" />
+                </xpath>
+                <xpath expr="//field[@name='privacy_visibility']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='resource_calendar_id']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+            </field>
+      </record>
+
+
+       <record id="project.open_create_project" model="ir.actions.act_window">
+            <field name="name">Create a Project</field>
+            <field name="res_model">project.project</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="project.edit_project"/>
+            <field name="target">current</field>
+        </record>
+
   </data>
 </odoo>

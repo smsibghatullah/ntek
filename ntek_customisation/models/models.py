@@ -32,3 +32,24 @@ class Contract(models.Model):
     _name = 'contract'
 
     name = fields.Char('name')
+
+class ProjectType(models.Model):
+    _name = 'project.type'
+
+    name = fields.Char(string = 'Project Type')
+
+class ProjectSubType(models.Model):
+    _name = 'project.sub.type'
+
+    project_type = fields.Many2one('project.type', string='Project Type')
+    name = fields.Char(string='Project Sub Type')
+
+class Project(models.Model):
+    _inherit = 'project.project'
+
+    project_type = fields.Many2one('project.type', string='Project Type')
+    project_sub_type = fields.Many2one('project.sub.type', string="Project Sub Type", domain="[('project_type', '=', project_type)]")
+    description = fields.Char(string='Description')
+    start_date = fields.Date(string="Start Date")
+    end_date = fields.Date(string="End Date")
+

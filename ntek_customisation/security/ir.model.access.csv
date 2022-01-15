@@ -1,2 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_ntek_customisation_ntek_customisation,ntek_customisation.ntek_customisation,model_ntek_customisation_ntek_customisation,base.group_user,1,1,1,1
+access_project_type,project.type,model_project_type,project.group_project_user,1,1,1,1
+access_project_type1,project.type1,model_project_type,project.group_project_manager,1,1,1,1
+access_project_sub_type,project.sub.type,model_project_sub_type,project.group_project_user,1,1,1,1
+access_project_sub_type1,project.sub.type1,model_project_sub_type,project.group_project_manager,1,1,1,1
