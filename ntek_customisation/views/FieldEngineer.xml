@@ -1,0 +1,29 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="field_engineer_view_tree">
+          <field name="name">Field Engineer Tree</field>
+          <field name="model">field.engineer</field>
+          <field name="arch" type="xml">
+              <tree>
+                  <field name="name"></field>
+                  <field name="last_name"></field>
+                  <field name="country"></field>
+                  <field name="city"></field>
+                  <field name="email"></field>
+                  <field name="mobile"></field>
+                  <field name="user_id" required="True"></field>
+                  <field name="user_password" password="True" required="True" />
+              </tree>
+          </field>
+      </record>
+      <record id="field_engineer_action" model="ir.actions.act_window">
+          <field name="name">Field Engineer</field>
+          <field name="res_model">field.engineer</field>
+          <field name="view_mode">tree,form</field>
+      </record>
+      <menuitem name="Field Engineer" id="menu_field_engineer" parent="project.menu_main_pm"
+                action="field_engineer_action" sequence="6" />
+
+    </data>
+</odoo>
