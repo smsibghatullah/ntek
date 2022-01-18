@@ -88,7 +88,7 @@
                 <xpath expr="//field[@name='privacy_visibility']" position="attributes">
                     <attribute name="invisible">True</attribute>
                 </xpath>
-                <xpath expr="//field[@name='resource_calendar_id']" position="attributes">
+                <xpath expr="//group[@name='misc']" position="attributes">
                     <attribute name="invisible">True</attribute>
                 </xpath>
             </field>

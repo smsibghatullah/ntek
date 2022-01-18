@@ -4,14 +4,14 @@ from odoo import models, fields, api
 class FieldEngineer(models.Model):
     _name = 'field.engineer'
 
-    name = fields.Char(string = 'First Name')
-    last_name = fields.Char(string = 'Last Name')
+    name = fields.Char(string = 'First Name', required = 'True')
+    last_name = fields.Char(string = 'Last Name', required = 'True')
     country = fields.Char(string = 'Country')
     city = fields.Char(string='City')
     email = fields.Char(string = 'E-mail')
     mobile = fields.Char(string = 'Mobile No.')
-    user_id = fields.Char(string = 'User ID')
-    user_password = fields.Char(string = 'Password', mask = '*')
+    user_id = fields.Char(string = 'User ID', required = 'True')
+    user_password = fields.Char(string = 'Password', required = 'True')
 
     # def name_selection_groups(ids):
     #     return 'sel_groups_' + '_'.join(str(it) for it in ids)
