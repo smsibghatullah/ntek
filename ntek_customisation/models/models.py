@@ -31,7 +31,7 @@ class ProjectTask(models.Model):
 class Contract(models.Model):
     _name = 'contract'
 
-    name = fields.Char('name')
+    name = fields.Char(string = 'Contract Name')
 
 class ProjectType(models.Model):
     _name = 'project.type'

@@ -3,3 +3,10 @@ access_project_type,project.type,model_project_type,project.group_project_user,1
 access_project_type1,project.type1,model_project_type,project.group_project_manager,1,1,1,1
 access_project_sub_type,project.sub.type,model_project_sub_type,project.group_project_user,1,1,1,1
 access_project_sub_type1,project.sub.type1,model_project_sub_type,project.group_project_manager,1,1,1,1
+access_field_engineer,field.engineer,model_field_engineer,project.group_project_user,1,1,1,1
+access_field_engineer1,field.engineer1,model_field_engineer,project.group_project_manager,1,1,1,1
+access_contract,contract,model_contract,project.group_project_user,1,1,1,1
+access_contract1,contract1,model_contract,project.group_project_manager,1,1,1,1
+access_base_res_users,res.users,base.model_res_users,project.group_project_user,0,1,1,0
+access_ir_module_category,ir.module.category,base.model_ir_module_category,project.group_project_user,1,0,0,0
+

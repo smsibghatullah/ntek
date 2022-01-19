@@ -71,7 +71,6 @@
       <menuitem name="Project Sub Type" id="menu_project_sub_type" parent="project.menu_main_pm"
                 action="project_sub_type_action" sequence="5" />
 
-
       <record model="ir.ui.view" id="view_task_form3">
             <field name="name">project.view_task_form3.inherit</field>
             <field name="inherit_id" ref="project.edit_project"/>
@@ -89,7 +88,7 @@
                 <xpath expr="//field[@name='privacy_visibility']" position="attributes">
                     <attribute name="invisible">True</attribute>
                 </xpath>
-                <xpath expr="//field[@name='resource_calendar_id']" position="attributes">
+                <xpath expr="//group[@name='misc']" position="attributes">
                     <attribute name="invisible">True</attribute>
                 </xpath>
             </field>
