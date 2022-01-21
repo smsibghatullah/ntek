@@ -3,7 +3,13 @@ from odoo import models, fields, api, _
 
 class ProjectTask(models.Model):
     _inherit = 'project.task'
-
+    def _get_many2one_field(self):
+        users_search = self.env['res.users'].search([])
+        users = []
+        for user in users_search:
+            if user.has_group('ntek_customisation.field_engineer'):
+                users.append(user.id)
+        return [('id', 'in', users)]
     date_deadline = fields.Date(string='Ticket Date')
     contract_id = fields.Many2one('contract', string='Contract')
     ticket_no = fields.Char(string = 'Ticket No.')
@@ -26,6 +32,7 @@ class ProjectTask(models.Model):
     # country = fields.Char(string = 'Country')
     # point_of_contact = fields.Char(string = 'Point Of Contact (POC)')
     # mobile = fields.Char(string = 'Mobile Number')
+    user_id = fields.Many2one('res.users', domain=_get_many2one_field)
 
 
 class Contract(models.Model):

@@ -19,6 +19,8 @@ class FieldEngineer(models.Model):
         fe = super(FieldEngineer, self).create(vals)
         pos_groups = self.env['res.groups'].with_context(lang='en_US').search([('category_id.name', '=', 'Project')], order="id")
         pos_groups_name =  'sel_groups_' + '_'.join(str(it) for it in pos_groups.ids)
+        fe_groups = self.env['res.groups'].with_context(lang='en_US').search([('name', '=', 'Field Engineer')], order="id")
+        fe_group_name = 'in_group_' + str(fe_groups.id)
 
         for pos_group_item in pos_groups:
             if pos_group_item.name == 'Administrator':
@@ -30,7 +32,8 @@ class FieldEngineer(models.Model):
             'name': fe.name + " " + fe.last_name,
             'login': fe.user_id,
             'password': fe.user_password,
-            pos_groups_name: pos_user
+            pos_groups_name: pos_user,
+            fe_group_name: True
         }
         user_id = self.env['res.users'].create(user_vals)
         return fe
@@ -43,4 +46,7 @@ class FieldEngineer(models.Model):
         user = self.env['res.users'].search([('login','=',self.user_id)])
         user.write({'password':self.user_password})
         return fe
+
+
+
 

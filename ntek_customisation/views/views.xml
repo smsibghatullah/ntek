@@ -113,5 +113,9 @@
             <field name="groups_id" eval="[(6, 0, [ref('base.group_erp_manager')])]"/>
       </record>
 
+      <record id="field_engineer" model="res.groups">
+        <field name="name">Field Engineer</field>
+      </record>
+
   </data>
 </odoo>
