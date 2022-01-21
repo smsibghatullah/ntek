@@ -46,7 +46,7 @@ class APIController(http.Controller):
         self._model = "ir.model"
 
     @validate_token
-    @http.route(_routes, type="json", auth="none", methods=["GET"], csrf=False)
+    @http.route(_routes, type="http", auth="none", methods=["GET"], csrf=False)
     def get(self, model=None, id=None, **payload):
         try:
             ioc_name = model
@@ -67,8 +67,8 @@ class APIController(http.Controller):
                     )
                 if data:
                     c=3
-                    return data
-                    # return valid_response(data)
+                    # return data
+                    return valid_response(data)
                 else:
                     return valid_response(data)
             return invalid_response(
