@@ -13,9 +13,6 @@ class FieldEngineer(models.Model):
     user_id = fields.Char(string = 'User ID', required = 'True')
     user_password = fields.Char(string = 'Password', required = 'True')
 
-    # def name_selection_groups(ids):
-    #     return 'sel_groups_' + '_'.join(str(it) for it in ids)
-
     @api.model
     def create(self, vals):
         print(vals)
@@ -40,12 +37,10 @@ class FieldEngineer(models.Model):
 
     def write(self, vals):
         fe = super(FieldEngineer, self).write(vals)
-
         user_vals = {
             'password': self.user_password,
         }
         user = self.env['res.users'].search([('login','=',self.user_id)])
         user.write({'password':self.user_password})
-        # user_id = self.env['res.users'].write(user_vals)
         return fe
 

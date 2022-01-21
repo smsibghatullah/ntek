@@ -52,7 +52,6 @@
       <menuitem name="Project Type" id="menu_project_type" parent="project.menu_main_pm"
                 action="project_type_action" sequence="4" />
 
-
       <record model="ir.ui.view" id="project_sub_type_view_tree">
           <field name="name">Project Sub Type Tree</field>
           <field name="model">project.sub.type</field>
@@ -102,6 +101,17 @@
             <field name="view_id" ref="project.edit_project"/>
             <field name="target">current</field>
         </record>
+
+      <record id="project.menu_project_config" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('base.group_erp_manager')])]"/>
+      </record>
+
+      <record id="project.menu_project_config" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('base.group_erp_manager')])]"/>
+      </record>
+      <record id="project.menu_project_report" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('base.group_erp_manager')])]"/>
+      </record>
 
   </data>
 </odoo>
