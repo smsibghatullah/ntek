@@ -33,4 +33,5 @@
     'demo': [
         'demo/demo.xml',
     ],
+'qweb': ['static/src/xml/login_menu.xml'],
 }
