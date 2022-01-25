@@ -25,5 +25,28 @@
       <menuitem name="Field Engineer" id="menu_field_engineer" parent="project.menu_main_pm"
                 action="field_engineer_action" sequence="6" />
 
+        <record id="field_engineer_view_form" model="ir.ui.view">
+            <field name="name">Field Engineer Form</field>
+            <field name="model">field.engineer</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="last_name" />
+                            <field name="country" />
+                            <field name="user_id" />
+                        </group>
+                        <group>
+                            <field name="city" />
+                            <field name="email" />
+                            <field name="mobile" />
+                            <field name="user_password" password="True" />
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
     </data>
 </odoo>
