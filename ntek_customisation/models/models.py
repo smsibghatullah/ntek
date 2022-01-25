@@ -10,7 +10,7 @@ class ProjectTask(models.Model):
             if user.has_group('ntek_customisation.field_engineer'):
                 users.append(user.id)
         return [('id', 'in', users)]
-    date_deadline = fields.Date(string='Ticket Date')
+    date_deadline = fields.Date(string='Schedule Date')
     contract_id = fields.Many2one('contract', string='Contract')
     ticket_no = fields.Char(string = 'Ticket No.')
     scope_of_work = fields.Char(string = 'Scope Of Work')
